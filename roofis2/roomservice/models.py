@@ -10,7 +10,7 @@ class Location(models.Model):
         return '{}'.format(self.name)
 
 
-class Buildings(models.Model):
+class Building(models.Model):
     name = models.CharField(max_length=16)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
 
@@ -42,7 +42,7 @@ class Staff(models.Model):
 
 
 class Room(models.Model):
-    building = models.ForeignKey(Buildings, on_delete=models.CASCADE)
+    building = models.ForeignKey(Building, on_delete=models.CASCADE)
     room_number = models.CharField(max_length=16)
     capacity = models.IntegerField()
     seating = models.BooleanField()
@@ -52,6 +52,8 @@ class Room(models.Model):
     floor = models.SmallIntegerField()
     admin = models.ForeignKey(BookingGroup, on_delete=models.SET_DEFAULT, default=1)
     service_staff = models.ForeignKey(Staff, on_delete=models.PROTECT)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
 
     def __str__(self):
         return '{} - {}'.format(self.building.name, self.room_number)
@@ -91,3 +93,11 @@ class Booking(models.Model):
     def __str__(self):
         return '{} - {} - {}'.format(self.room.room_number, self.start_date.strftime('%Y - %m - %d'),
                                      self.end_date.strftime('%Y - %m - %d'))
+
+
+class AccessPoint(models.Model):
+    mac_address = models.CharField(max_length=12)
+    rooms = models.ManyToManyField(Room)
+
+    def __str__(self):
+        return '{}'.format(self.mac_address)
