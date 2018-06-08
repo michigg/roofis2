@@ -15,3 +15,6 @@ def booking(request):
 def admin(request):
     return render(request, 'admin.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})
 
+
+def favorites(request):
+    return render(request, 'favorites.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})
