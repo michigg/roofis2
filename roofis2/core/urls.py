@@ -1,4 +1,4 @@
-"""respool URL Configuration
+"""roofis2 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -21,6 +21,7 @@ from rest_framework.permissions import AllowAny
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('roomservice.urls')),
     # APIs
     # path('api/', include('respool.api.urls')),
 
