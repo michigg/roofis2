@@ -6,7 +6,7 @@
     {% block css_extra %}{% endblock %}
     {% block head %}
         <!--<link rel="stylesheet" href="./static/style.css" />-->
-        <title>{% block title %}{% endblock %} Ressourcenpool Bamberg</title>
+        <title>{% block title %}{% endblock %}</title>
     {% endblock %}
     <script src="{{ static('js/script.js') }}"></script>
     {% block js_extra %}{% endblock %}
@@ -18,7 +18,6 @@
     <script src="{{ static('libs/bootstrap-4.1.0/dist/js/bootstrap.min.js') }}"></script>
 </head>
 <body class="container-fluid">
-{{ nav.main_nav() }}
 <div class="row bg-secondary mb-2">
     <div class="col-12">
         <h1 class="text-center h3">
@@ -26,12 +25,13 @@
         </h1>
     </div>
 </div>
+{{ nav.main_nav() }}
 <div id="content" class="row">
     {% block content %}{% endblock %}
 </div>
 <div id="footer">
     {% block footer %}
-        &copy; 2018 Ressourcenpool Bamberg.
+        &copy; 2018 rooF(i)S.
     {% endblock %}
 </div>
 </body>
