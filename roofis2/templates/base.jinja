@@ -18,7 +18,6 @@
     <script src="{{ static('libs/bootstrap-4.1.0/dist/js/bootstrap.min.js') }}"></script>
 </head>
 <body class="container-fluid">
-{{ nav.main_nav() }}
 <div class="row bg-secondary mb-2">
     <div class="col-12">
         <h1 class="text-center h3">
@@ -26,6 +25,7 @@
         </h1>
     </div>
 </div>
+{{ nav.main_nav() }}
 <div id="content" class="row">
     {% block content %}{% endblock %}
 </div>
