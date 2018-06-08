@@ -177,11 +177,11 @@ LOGGING = {
         # },
     },
     'loggers': {
-        'respool': {
-            'handlers': ['console'],
-            'level': 'INFO',
-        },
-        'respool.management.sample_data_creation': {
+        # 'roomservice': {
+        #     'handlers': ['console'],
+        #     'level': 'INFO',
+        # },
+        'roomservice.management.sample_data_creation': {
             'handlers': ['console'],
             'level': 'DEBUG'
         }
