@@ -1,0 +1,9 @@
+Django==2.0.4
+Jinja2==2.10
+MarkupSafe==1.0
+pytz==2018.4
+Pillow==5.1.0
+django-extensions==2.0.7
+requests==2.18.4
+djangorestframework==3.8.2
+coreapi==2.3.3
