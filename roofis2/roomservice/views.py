@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from roomservice.models import Room
 
 
 # Create your views here.
 def home(request):
-    return render(request, 'search.jinja', {"title":"rooF(i)S is love rooF(i)S is live!!"})
+    rooms = Room.objects.all()
+    return render(request, 'search.jinja', {"title":"rooF(i)S is love rooF(i)S is live!!", "rooms":rooms})
 
 
 def booking(request):
