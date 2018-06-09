@@ -18,10 +18,17 @@ from django.contrib import admin
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.documentation import include_docs_urls
 from rest_framework.permissions import AllowAny
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('roomservice.urls')),
+
+    path('login/', auth_views.login, {'template_name': 'login.jinja'}, name='login'),
+    path('logout/', auth_views.logout, name='logout'),
+
+
     # APIs
     # path('api/', include('respool.api.urls')),
 

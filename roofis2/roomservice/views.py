@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from roomservice.models import Room
 import logging
 logger = logging.getLogger(__name__)
@@ -24,3 +24,5 @@ def admin(request):
 
 def favorites(request):
     return render(request, 'favorites.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})
+
+
