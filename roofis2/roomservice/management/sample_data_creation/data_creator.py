@@ -1,5 +1,5 @@
 from roomservice.models import RoomType, Room, NumEquipment, Building, Location, Equipment, Booking, BookingGroup, \
-    Staff, AccessPoint
+    Staff, AccessPoint, Favorite
 from django.contrib.auth.models import User
 import logging
 import random
@@ -55,6 +55,10 @@ def create():
     logger.info('AccessPoint Count: {}'.format(AccessPoint.objects.count()))
     create_access_point()
     logger.info('AccessPoint Count: {}'.format(AccessPoint.objects.count()))
+
+    logger.info('Favorites Count: {}'.format(Favorite.objects.count()))
+    create_favorite()
+    logger.info('Favorites Count: {}'.format(Favorite.objects.count()))
 
 
 def create_locations(names):
@@ -142,3 +146,8 @@ def create_access_point():
         for i in range(1, random.randint(1, 4)):
             access_point.rooms.add(random.choice(Room.objects.all()))
         access_point.save()
+
+
+def create_favorite():
+    for staff in Staff.objects.all():
+        favorite, _ = Favorite.objects.get_or_create(staff=staff, room=random.choice(Room.objects.all()))

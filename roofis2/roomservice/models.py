@@ -99,3 +99,11 @@ class AccessPoint(models.Model):
 
     def __str__(self):
         return '{}'.format(self.mac_address)
+
+
+class Favorite(models.Model):
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{} - {}'.format(self.staff.user.username, self.room.room_number)
