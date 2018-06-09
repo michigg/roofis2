@@ -1,32 +1,30 @@
 {% extends 'base.jinja' %}
 {% import 'fav_macro.jinja' as macros %}
 {% block content %}
-    <div class="row container">
-        <div class="col-2"></div>
-        <div class="col-9">
-            <div class="row">
-                <div class="col-6">
-                    {{ macros.home_item_with_icon(icon='fa-crosshairs', icon_size='fa-4x', url_id='roomservice:location-based-search', link='', title='Localization Search', attr='') }}
-                </div>
-                <div class="col-6">
-                    {{ macros.home_item_with_icon(icon='fa-search', icon_size='fa-4x', url_id='roomservice:search', link='', title='Manual Search', attr='') }}
-                </div>
-                {% if request.user.is_authenticated %}
-                    {% for favorite in favorites %}
-                        <div class="col-6">
-                            {{ macros.home_item_with_icon(icon='fa-star', icon_size='fa-4x', url_id='', link=favorite.room.id, title=favorite.room.room_number, attr='') }}
-                        </div>
-                    {% endfor %}
-                    <div class="col-6">
-                        {{ macros.home_item_with_icon(icon='fa-plus', icon_size='fa-4x', url_id='roomservice:add-fav', link='', title='Add Fav', attr='') }}
-                    </div>
-                    {% if request.user.is_superuser %}
-                        <div class="col-6">
-                            {{ macros.home_item_with_icon(icon='fa-bar-chart', icon_size='fa-4x', url_id='', link='', title='Statistics', attr='') }}
-                        </div>
-                    {% endif %}
-                {% endif %}
+    <div class="col-2"></div>
+    <div class="col-9">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                {{ macros.home_item_with_icon(icon='fa-crosshairs', icon_size='fa-4x', url_id='roomservice:location-based-search', link='', title='Localization Search', attr='') }}
             </div>
+            <div class="col-12 col-md-6">
+                {{ macros.home_item_with_icon(icon='fa-search', icon_size='fa-4x', url_id='roomservice:search', link='', title='Manual Search', attr='') }}
+            </div>
+            {% if request.user.is_authenticated %}
+                {% for favorite in favorites %}
+                    <div class="col-12 col-md-6">
+                        {{ macros.home_item_with_icon(icon='fa-star', icon_size='fa-4x', url_id='', link=favorite.room.id, title=favorite.room.room_number, attr='') }}
+                    </div>
+                {% endfor %}
+                <div class="col-12 col-md-6">
+                    {{ macros.home_item_with_icon(icon='fa-plus', icon_size='fa-4x', url_id='roomservice:add-fav', link='', title='Add Fav', attr='') }}
+                </div>
+                {% if request.user.is_superuser %}
+                    <div class="col-12 col-md-6">
+                        {{ macros.home_item_with_icon(icon='fa-bar-chart', icon_size='fa-4x', url_id='', link='', title='Statistics', attr='') }}
+                    </div>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}
