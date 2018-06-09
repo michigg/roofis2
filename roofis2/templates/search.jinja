@@ -13,13 +13,13 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
-                <form action="{{ url("roomservice:booking") }}" method="POST" >
+                <form action="{{ url("roomservice:booking") }}" method="POST" id="form">
                 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
                 <div class="form-group">
                     <label for="sel1">Select list:</label>
-                    <select multiple class="form-control" id="sel1">
+                    <select multiple name="room" class="form-control" form="form" id="sel1">
                         {% for room in rooms %}
-                            <option>{{room.room_number}}</option>
+                            <option value="{{room.id}}">{{room.room_number}}</option>
                         {% endfor %}
                     </select>
                 </div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from roomservice.models import Room
 import logging
-logger=logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 def home(request):
@@ -10,8 +10,11 @@ def home(request):
 
 
 def booking(request):
-    request.POST.get("sel1", "")
-    return render(request, 'booking.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})
+    room_id = request.POST["room"]
+    room = Room.objects.get(id=room_id)
+    logger.info(room_id)
+    logger.info(room)
+    return render(request, 'booking.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!","room":room})
 
 
 def admin(request):
