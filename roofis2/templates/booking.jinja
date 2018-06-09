@@ -1,11 +1,10 @@
 {% extends 'base.jinja' %}
 {% block content %}
-{% for day in multd%}
-    <script>
-    var el = document.getElementById("{{day}}");
-    el.classList.add("booked");
-    </script>
-{% endfor %}
+<script type="text/javascript">
+    data_from_django = {{ data }};
+    console.log(data_from_django);
+    init(data_from_django);
+</script>
 <table class="table table-light">
 <thead>
     <tr>
@@ -114,7 +113,7 @@
         <th scope="row">15:00 - 16:00</th>
         <td id="Monday15-16" class=""></td>
         <td id="Tuesday15-16" class=""></td>
-        <td id="Wednesday15-16" class=""></td>
+        <td id="Wednesday15-16" ></td>
         <td id="Thursday15-16" class=""></td>
         <td id="Friday15-16" class=""></td>
         <td id="Saturday15-16" class=""></td>
