@@ -3,7 +3,7 @@ from .models import Favorite
 from django.forms import ModelForm
 
 
-class AuthorForm(ModelForm):
+class FavoriteForm(ModelForm):
     class Meta:
         model = Favorite
-        fields = ['room', 'staff']
+        fields = ['room']

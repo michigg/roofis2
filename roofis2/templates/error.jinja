@@ -1,0 +1,15 @@
+{% extends 'base.jinja' %}
+{% block content %}
+    <div class="container">
+        <div class="row text-dark">
+            <div class="col-12 bg-white text-center">
+                <p class="h1 text-xl-center text-danger">Fuck!</p>
+                <p class="h3 text-xl-center">Error</p>
+                <p>Sorry Dude!</p>
+                <video src="{{ static('/images/oops.mp4' }}" loop autoplay></video>
+                <br/>
+                <a href="{{ url('roomservice:home') }}}" class="btn-link">Zurück zur Übersicht</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

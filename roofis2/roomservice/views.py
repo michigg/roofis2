@@ -1,6 +1,7 @@
-from roomservice.models import Room, Favorite, Booking
+from roomservice.models import Room, Favorite, Booking, Staff
+from .forms import FavoriteForm
 import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import logging
 
 logger = logging.getLogger(__name__)
@@ -73,10 +74,26 @@ def favorites(request):
 
 def add_favorites(request):
     if request.method == 'POST':
-        pass
+        form = FavoriteForm(request.POST)
+        if form.is_valid():
+            staff = Staff.objects.get(user=request.user)
+            room = form.cleaned_data['room']
+            Favorite.objects.create(staff=staff, room=room)
+            return render(request, 'success.jinja', {})
+        else:
+            return render(request, 'error.jinja', {})
     else:
-        return render(request, 'add_fav.jinja', {"title": "Add a new Favorite"})
+        form = FavoriteForm()
+        return render(request, 'add_fav.jinja', {"title": "Add a new Favorite", 'form': form})
 
 
 def location_based_search(request):
     return render(request, 'favorites.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})
+
+
+def success(request):
+    return render(request, 'success.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})
+
+
+def error(request):
+    return render(request, 'error.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})

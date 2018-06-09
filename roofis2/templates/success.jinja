@@ -1,0 +1,15 @@
+{% extends 'base.jinja' %}
+{% block content %}
+    <div class="container">
+        <div class="row text-dark">
+            <div class="col-12 bg-white text-center">
+                <p class="h1 text-xl-center text-success">Krass!</p>
+                <p class="h3 text-xl-center">Success</p>
+                <p>Das Formular wurde erfolgreich gespeichert!</p>
+                <video src="{{ static('images/dumbledore.mp4') }}" loop autoplay></video>
+                <br/>
+                <a class="btn-link" href="{{ url('roomservice:home') }}">Zurück zur Übersicht</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
