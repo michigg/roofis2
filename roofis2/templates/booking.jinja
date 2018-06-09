@@ -1,6 +1,12 @@
 {% extends 'base.jinja' %}
 {% block content %}
-<table class="table table-hover table-light">
+{% for day in multd%}
+    <script>
+    var el = document.getElementById("{{day}}");
+    el.classList.add("booked");
+    </script>
+{% endfor %}
+<table class="table table-light">
 <thead>
     <tr>
         <th scope="col">Time</th>
@@ -12,157 +18,147 @@
         <th scope="col">Saturday</th>
         <th scope="col">Sunday</th>
     </tr>
-</head>
+</thead>
 <tbody>
     <tr>
         <th scope="row">6:00 - 7:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday6-7" class=""></td>
+        <td id="Tuesday6-7" class=""></td>
+        <td id="Wednesday6-7" class=""></td>
+        <td id="Thursday6-7" class=""></td>
+        <td id="Friday6-7" class=""></td>
+        <td id="Saturday6-7" class=""></td>
+        <td id="Sunday6-7" class=""></td>
     </tr>
     <tr>
         <th scope="row">7:00 - 8:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday7-8" class=""></td>
+        <td id="Tuesday7-8" class=""></td>
+        <td id="Wednesday7-8" class=""></td>
+        <td id="Thursday7-8" class=""></td>
+        <td id="Friday7-8" class=""></td>
+        <td id="Saturday7-8" class=""></td>
+        <td id="Sunday7-8" class=""></td>
     </tr>
     <tr>
         <th scope="row">8:00 - 9:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday8-9" class=""></td>
+        <td id="Tuesday8-9" class=""></td>
+        <td id="Wednesday8-9" class=""></td>
+        <td id="Thursday8-9" class=""></td>
+        <td id="Friday8-9" class=""></td>
+        <td id="Saturday8-9" class=""></td>
+        <td id="Sunday8-9" class=""></td>
     </tr>
     <tr>
         <th scope="row">9:00 - 10:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday9-10" class=""></td>
+        <td id="Tuesday9-10" class=""></td>
+        <td id="Wednesday9-10" class=""></td>
+        <td id="Thursday9-10" class=""></td>
+        <td id="Friday9-10" class=""></td>
+        <td id="Saturday9-10" class=""></td>
+        <td id="Sunday9-10" class=""></td>
     </tr>
     <tr>
         <th scope="row">10:00 - 11:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday10-11" class=""></td>
+        <td id="Tuesday10-11" class=""></td>
+        <td id="Wednesday10-11" class=""></td>
+        <td id="Thursday10-11" class=""></td>
+        <td id="Friday10-11" class=""></td>
+        <td id="Saturday10-11" class=""></td>
+        <td id="Sunday10-11" class=""></td>
     </tr>
     <tr>
         <th scope="row">11:00 - 12:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday11-12" class=""></td>
+        <td id="Tuesday11-12" class=""></td>
+        <td id="Wednesday11-12" class=""></td>
+        <td id="Thursday11-12" class=""></td>
+        <td id="Friday11-12" class=""></td>
+        <td id="Saturday11-12" class=""></td>
+        <td id="Sunday11-12" class=""></td>
     </tr>
     <tr>
         <th scope="row">12:00 - 13:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday12-13" class=""></td>
+        <td id="Tuesday12-13" class=""></td>
+        <td id="Wednesday12-13" class=""></td>
+        <td id="Thursday12-13" class=""></td>
+        <td id="Friday12-13" class=""></td>
+        <td id="Saturday12-13" class=""></td>
+        <td id="Sunday12-13" class=""></td>
     </tr>
     <tr>
         <th scope="row">13:00 - 14:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday13-14" class=""></td>
+        <td id="Tuesday13-14" class=""></td>
+        <td id="Wednesday13-14" class=""></td>
+        <td id="Thursday13-14" class=""></td>
+        <td id="Friday13-14" class=""></td>
+        <td id="Saturday13-14" class=""></td>
+        <td id="Sunday13-14" class=""></td>
     </tr>
     <tr>
         <th scope="row">14:00 - 15:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday14-15" class=""></td>
+        <td id="Tuesday14-15" class=""></td>
+        <td id="Wednesday14-15" class=""></td>
+        <td id="Thursday14-15" class=""></td>
+        <td id="Friday14-15" class=""></td>
+        <td id="Saturday14-15" class=""></td>
+        <td id="Sunday14-15" class=""></td>
     </tr>
     <tr>
         <th scope="row">15:00 - 16:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday15-16" class=""></td>
+        <td id="Tuesday15-16" class=""></td>
+        <td id="Wednesday15-16" class=""></td>
+        <td id="Thursday15-16" class=""></td>
+        <td id="Friday15-16" class=""></td>
+        <td id="Saturday15-16" class=""></td>
+        <td id="Sunday15-16" class=""></td>
     </tr>
     <tr>
         <th scope="row">16:00 - 17:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday16-17" class=""></td>
+        <td id="Tuesday16-17" class=""></td>
+        <td id="Wednesday16-17" class=""></td>
+        <td id="Thursday16-17" class=""></td>
+        <td id="Friday16-17" class=""></td>
+        <td id="Saturday16-17" class=""></td>
+        <td id="Sunday16-17" class=""></td>
     </tr>
     <tr>
         <th scope="row">17:00 - 18:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday17-18" class=""></td>
+        <td id="Tuesday17-18" class=""></td>
+        <td id="Wednesday17-18" class=""></td>
+        <td id="Thursday17-18" class=""></td>
+        <td id="Friday17-18" class=""></td>
+        <td id="Saturday17-18" class=""></td>
+        <td id="Sunday17-18" class=""></td>
     </tr>
     <tr>
         <th scope="row">18:00 - 19:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday18-19" class=""></td>
+        <td id="Tuesday18-19" class=""></td>
+        <td id="Wednesday18-19" class=""></td>
+        <td id="Thursday18-19" class=""></td>
+        <td id="Friday18-19" class=""></td>
+        <td id="Saturday18-19" class=""></td>
+        <td id="Sunday18-19" class=""></td>
     </tr>
     <tr>
         <th scope="row">19:00 - 20:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <th scope="row">20:00 - 6:00</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="Monday19-20" class=""></td>
+        <td id="Tuesday19-20" class=""></td>
+        <td id="Wednesday19-20" class=""></td>
+        <td id="Thursday19-20" class=""></td>
+        <td id="Friday19-20" class=""></td>
+        <td id="Saturday19-20" class=""></td>
+        <td id="Sunday19-20" class=""></td>
     </tr>
 </tbody>
 </table>
