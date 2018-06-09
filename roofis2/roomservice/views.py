@@ -32,5 +32,12 @@ def favorites(request):
                   {"title": "rooF(i)S is love rooF(i)S is live!!"})
 
 
+def add_favorites(request):
+    if request.method == 'POST':
+        pass
+    else:
+        return render(request, 'add_fav.jinja', {"title": "Add a new Favorite"})
+
+
 def location_based_search(request):
     return render(request, 'favorites.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})
