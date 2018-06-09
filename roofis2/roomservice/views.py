@@ -41,3 +41,12 @@ def add_favorites(request):
 
 def location_based_search(request):
     return render(request, 'favorites.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})
+
+
+def filter_search(request):
+    if request.method=="POST":
+        logger.info(request.POST)
+
+
+    return render(request, 'search.jinja',{"title": "rooF(i)S is love rooF(i)S is live!!"})
+

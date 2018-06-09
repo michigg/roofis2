@@ -4,28 +4,72 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
+                <p>
+
+
                 <form class="form-inline my-2 my-lg-0">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                       aria-expanded="false" aria-controls="collapseExample">
+                        Filter
+                    </a>
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
+                </p>
+
+        <div class="collapse" id="collapseExample" style="max-width: 200px">
+            <form action="{{url('roomservice:filter-search')}}" method="POST" id="FormFilter">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                <div class="card card-body">
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="checkboxbarrierfree">
+                        <label class="form-check-label" for="checkbox">barrierfree</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="checkbox">
+                        <label class="form-check-label" for="checkbox">seating</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="checkbox">
+                        <label class="form-check-label" for="checkbox">cooling</label>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Capacity
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">no selection</a>
+                            <a class="dropdown-item" href="#">20</a>
+                            <a class="dropdown-item" href="#">30</a>
+                            <a class="dropdown-item" href="#">60</a>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Use filters</button>
+                </div>
+            </form>
+        </div>
             </div>
         </div>
         <div class="row">
             <div class="col"></div>
             <div class="col-8">
                 <form action="{{ url("roomservice:booking") }}" method="POST" id="form">
-                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                <div class="form-group">
-                    <label for="sel1">Select list:</label>
-                    <select multiple name="room" class="form-control" form="form" id="sel1">
-                        {% for room in rooms %}
-                            <option value="{{room.id}}">{{room.room_number}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                    <button type="submit" method="POST" value=" Send" class="btn btn-success" id="submit"> Submit </button>
-                </div>
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                    <div class="form-group">
+                        <label for="sel1">Select list:</label>
+                        <select multiple name="room" class="form-control" form="form" id="sel1">
+                            {% for room in rooms %}
+                                <option value="{{ room.id }}">{{ room.room_number }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" method="POST" value=" Send" class="btn btn-success" id="submit"> Submit
+                    </button>
                 </form>
+            </div>
             <div class="col"></div>
         </div>
     </div>
