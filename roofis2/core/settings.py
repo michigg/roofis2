@@ -24,6 +24,7 @@ SECRET_KEY = 'e(4!&_nwsvyhml$gbv-v@0eodacfj22sf4gc+0x_&*ym4gl-16'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+LOGIN_REDIRECT_URL = 'roomservice:home'
 
 ALLOWED_HOSTS = []
 

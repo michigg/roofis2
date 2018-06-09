@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from roomservice.models import Room, Favorite
+from django.shortcuts import render, redirect
 import logging
 
 logger = logging.getLogger(__name__)
