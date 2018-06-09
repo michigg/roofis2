@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from roomservice.models import Room
+from django.utils import simplejson
+
 import logging
 logger = logging.getLogger(__name__)
 
@@ -12,10 +14,8 @@ def search(request):
 
 def booking(request):
     room_id = request.POST["room"]
-    room = Room.objects.get(id=room_id)
-    logger.info(room_id)
-    logger.info(room)
-    return render(request, 'booking.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!","room":room})
+    dataFromAPI =
+    return render(request, 'booking.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!","data":dataFromAPI})
 
 
 def admin(request):
