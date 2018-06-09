@@ -9,8 +9,44 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 def search(request):
-    rooms = Room.objects.all()
-    return render(request, 'search.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!", "rooms": rooms})
+    if request.method == 'POST':
+        logger.info(request.POST)
+        search_token = request.POST['search']
+        rooms = Room.objects.all()
+        # barrierfree = request.POST.get('barrierfree', 'off')
+        # logger.info(barrierfree)
+        if search_token:
+            rooms = rooms.filter(room_number__contains=search_token)
+        # else:
+        #     # barrierfree = request.POST['barrierfree']
+        #
+        #     if barrierfree:
+        #         # barrierfree = request.POST['barrierfree']
+        #         if barrierfree == 'on':
+        #             rooms = rooms.filter(barrierfree=True)
+        #
+        #     if 'seating' in request.POST:
+        #         seating = request.POST['seating']
+        #         if seating == 'on':
+        #             rooms = rooms.filter(seating=True)
+        #
+        #     if 'cooling' in request.POST:
+        #         cooling = request.POST['cooling']
+        #         if cooling == 'on':
+        #             rooms = rooms.filter(cooling=True)
+        #
+        #     if 'capatacity' in request.POST:
+        #         capatacity = request.POST['capatacity']
+        #         if not capatacity == '-1':
+        #             rooms = rooms.filter(capacity__gte=capatacity)
+
+        # logger.info(search_token, barrierfree, seating, cooling, capatacity)
+
+        return render(request, 'search.jinja',
+                      {"title": "rooF(i)S is love rooF(i)S is live!!", "rooms": rooms, "result_count": rooms.count()})
+    else:
+        rooms = {}
+        return render(request, 'search.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!", "rooms": rooms})
 
 
 def booking(request):
