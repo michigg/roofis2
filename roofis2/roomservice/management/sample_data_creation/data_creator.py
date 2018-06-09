@@ -1,5 +1,5 @@
 from roomservice.models import RoomType, Room, NumEquipment, Building, Location, Equipment, Booking, BookingGroup, \
-    Staff
+    Staff, AccessPoint
 from django.contrib.auth.models import User
 import logging
 import random
@@ -51,6 +51,10 @@ def create():
     logger.info('NumEquipment Count: {}'.format(NumEquipment.objects.count()))
     create_num_equipment()
     logger.info('NumEquipment Count: {}'.format(NumEquipment.objects.count()))
+
+    logger.info('AccessPoint Count: {}'.format(AccessPoint.objects.count()))
+    create_access_point()
+    logger.info('AccessPoint Count: {}'.format(AccessPoint.objects.count()))
 
 
 def create_locations(names):
@@ -129,3 +133,12 @@ def create_num_equipment():
         num_equipment = NumEquipment.objects.get_or_create(room=random.choice(Room.objects.all()),
                                                            equipment=random.choice(Equipment.objects.all()),
                                                            count=random.choice(range(1, 3)))
+
+
+def create_access_point():
+    for i in range(1, 25):
+        access_point, _ = AccessPoint.objects.get_or_create(mac_address=''.join(
+            random.choices(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'], k=12)), )
+        for i in range(1, random.randint(1, 4)):
+            access_point.rooms.add(random.choice(Room.objects.all()))
+        access_point.save()
