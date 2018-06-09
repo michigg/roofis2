@@ -66,30 +66,32 @@
                 {#                </form>#}
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <h2>Results</h2>
-            </div>
-        </div>
-        <div class="row">
-            {% for room in rooms %}
-                <div class="col-6">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Room:{{ room.room_number }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Building Name: {{ room.building.name }}</h6>
-                            <div class="card-text">
-                                <p>Capacity: {{ room.capacity }} Persons</p>
-                                <p>Room type: {{ room.room_type.type }}</p></div>
-                            <a href="#" class="card-link">Detail</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                    <p></p></br>
+        {% if rooms %}
+            <div class="row">
+                <div class="col-12">
+                    <h2>Results</h2>
                 </div>
-            {% endfor %}
-            <p>Results: {{ result_count }}</p>
-        </div>
+            </div>
+            <div class="row">
+                {% for room in rooms %}
+                    <div class="col-6">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Room:{{ room.room_number }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Building Name: {{ room.building.name }}</h6>
+                                <div class="card-text">
+                                    <p>Capacity: {{ room.capacity }} Persons</p>
+                                    <p>Room type: {{ room.room_type.type }}</p></div>
+                                <a href="{{ url('roomservice:booking', args=[room.id]) }}" class="card-link">Detail</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                        <p></p></br>
+                    </div>
+                {% endfor %}
+                <p>Results: {{ result_count }}</p>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
 

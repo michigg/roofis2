@@ -10,8 +10,7 @@ urlpatterns = [
     path('success/', views.success, name='success'),
 
     path('adminpage', views.admin, name='admin'),
-    path('booking', views.booking, name='booking'),
+    path('booking/<int:id>', views.booking, name='booking'),
     path('search', views.search, name='search'),
     path('location_search', views.location_based_search, name='location-based-search'),
     path('filter_search', views.filter_search, name='filter-search')]
-

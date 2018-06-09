@@ -49,9 +49,8 @@ def search(request):
         return render(request, 'search.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!", "rooms": rooms})
 
 
-def booking(request):
-    room_id = request.POST["room"]
-    return render(request, 'booking.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!", "data": room_id})
+def booking(request, id):
+    return render(request, 'booking.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!", "data": id})
 
 
 def admin(request):
