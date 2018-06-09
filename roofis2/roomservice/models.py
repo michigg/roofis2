@@ -42,7 +42,7 @@ class Staff(models.Model):
 
 
 class Room(models.Model):
-    building = models.ForeignKey(Building, on_delete=models.CASCADE)
+    building = models.ForeignKey('Building', on_delete=models.CASCADE)
     room_number = models.CharField(max_length=16)
     capacity = models.IntegerField()
     seating = models.BooleanField()
@@ -52,8 +52,6 @@ class Room(models.Model):
     floor = models.SmallIntegerField()
     admin = models.ForeignKey(BookingGroup, on_delete=models.SET_DEFAULT, default=1)
     service_staff = models.ForeignKey(Staff, on_delete=models.PROTECT)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
 
     def __str__(self):
         return '{} - {}'.format(self.building.name, self.room_number)
