@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block css_extra %}{% endblock %}
     {% block head %}
-        <link rel="stylesheet" href="../static/css/style.css" />
+        <link rel="stylesheet" href="../static/css/style.css"/>
         <title>{% block title %}{% endblock %}</title>
     {% endblock %}
-    <script src="{{ static('js/script.js') }}"></script>
+
     {% block js_extra %}{% endblock %}
     {#    <link rel="stylesheet" href="{{ static('css/style.css') }}">#}
+    <link rel="stylesheet" href="{{ static('libs/font-awesome-4.7.0/css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ static('libs/bootstrap-4.1.0/dist/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ static('css/respool/nav.css') }}">
     <script src="{{ static('libs/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ static('libs/popper.min.js') }}"></script>
     <script src="{{ static('libs/bootstrap-4.1.0/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ static('js/script.js') }}"></script>
 </head>
 <body class="container-fluid">
 <div class="row bg-secondary mb-2">

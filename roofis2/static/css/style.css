@@ -6,3 +6,9 @@
     vertical-align: middle;
     padding-left: -1em;
 }
+td{
+    background-color: lawngreen;
+}
+.booked{
+    background-color: red;
+}

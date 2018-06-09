@@ -142,7 +142,7 @@ def create_num_equipment():
 def create_access_point():
     for i in range(1, 25):
         access_point, _ = AccessPoint.objects.get_or_create(mac_address=''.join(
-            random.choices(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'], k=12)), )
+            random.choices(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'], k=12)))
         for i in range(1, random.randint(1, 4)):
             access_point.rooms.add(random.choice(Room.objects.all()))
         access_point.save()
