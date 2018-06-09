@@ -1,4 +1,4 @@
-from roomservice.models import Room, Favorite
+from roomservice.models import Room, Favorite, Booking
 from django.shortcuts import render, redirect
 import logging
 

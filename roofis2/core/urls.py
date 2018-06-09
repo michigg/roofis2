@@ -20,7 +20,6 @@ from rest_framework.documentation import include_docs_urls
 from rest_framework.permissions import AllowAny
 from django.contrib.auth import views as auth_views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('roomservice.urls')),
@@ -28,9 +27,8 @@ urlpatterns = [
     path('login/', auth_views.login, {'template_name': 'login.jinja'}, name='login'),
     path('logout/', auth_views.logout, name='logout'),
 
-
     # APIs
-    # path('api/', include('respool.api.urls')),
+    path('api/', include('roomservice.api.urls')),
 
     # API Docs
     # path('api/docs/', include_docs_urls(title='Respool API Docs', public=True,

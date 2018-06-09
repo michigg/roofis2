@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name = 'roomservice'
@@ -10,4 +10,6 @@ urlpatterns = [
     path('booking', views.booking, name='booking'),
     path('search', views.search, name='search'),
     path('search', views.location_based_search, name='location-based-search'),
+
+    path('roomservice', include('roomservice.api.urls'))
 ]
