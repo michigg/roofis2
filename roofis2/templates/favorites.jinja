@@ -20,6 +20,11 @@
                     <div class="col-6">
                         {{ macros.home_item_with_icon(icon='fa-plus', icon_size='fa-4x', url_id='', link='', title='Add Fav', attr='') }}
                     </div>
+                    {% if request.user.is_superuser %}
+                        <div class="col-6">
+                            {{ macros.home_item_with_icon(icon='fa-bar-chart', icon_size='fa-4x', url_id='', link='', title='Statistics', attr='') }}
+                        </div>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
