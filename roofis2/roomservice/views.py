@@ -24,8 +24,8 @@ def booking(request):
     for booking in bookings:
         sdate = booking.start_date
         edate = booking.end_date
-        stime = booking.start_time.hour()
-        etime = booking.end_time.hour()+1
+        stime = booking.start_time.hour
+        etime = booking.end_time.hour+1
         if edate != sdate:
             break
         else:
