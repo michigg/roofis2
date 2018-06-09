@@ -14,18 +14,23 @@ def search(request):
 def booking(request):
     room_id = request.POST["room"]
     room = Room.objects.get(id=room_id)
-    logger.info(room_id)
-    logger.info(room)
     startdate = datetime.date.today()
     weekday = startdate.weekday()
+    logger.info(weekday)
     enddate = startdate + datetime.timedelta(7)
-    multd = [[]]
+    multd = []
     bookings = Booking.objects.filter(room_id=room.id, start_date__gte=startdate, end_date__lte=enddate)
+    logger.info(bookings)
     for booking in bookings:
+        logger.info(booking)
         sdate = booking.start_date
+        logger.info(sdate)
         edate = booking.end_date
+        logger.info(edate)
         stime = booking.start_time.hour
+        logger.info(stime)
         etime = booking.end_time.hour+1
+        logger.info(etime)
         if edate != sdate:
             break
         else:
@@ -46,7 +51,9 @@ def booking(request):
             timediff = etime - stime
             if timediff > 1:
                 while timediff > 1:
-                    multd.append([day, stime + timediff])
+                    multd.append(day+(stime+timediff-1).__str__()+"-"+(stime + timediff).__str__())
+                    timediff = timediff-1
+            logger.info(multd)
     return render(request, 'booking.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!", "multd":multd})
 
 
