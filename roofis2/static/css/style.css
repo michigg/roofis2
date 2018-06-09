@@ -2,6 +2,7 @@
     height: 3.5em;
     background: #5a6268;
     border-radius: 30px;
-    vertical-align: middle;
+    line-height: 3.5em;
+  vertical-align: middle;
     padding-left: -1em;
 }
