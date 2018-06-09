@@ -177,7 +177,7 @@ LOGGING = {
         # },
     },
     'loggers': {
-        'respool': {
+        'roomservice': {
             'handlers': ['console'],
             'level': 'INFO',
         },
