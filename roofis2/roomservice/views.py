@@ -4,8 +4,9 @@ import logging
 import datetime
 logger = logging.getLogger(__name__)
 
+
 # Create your views here.
-def home(request):
+def search(request):
     rooms = Room.objects.all()
     return render(request, 'search.jinja', {"title":"rooF(i)S is love rooF(i)S is live!!", "rooms": rooms})
 

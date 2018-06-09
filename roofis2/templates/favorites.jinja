@@ -1,10 +1,20 @@
 {% extends 'base.jinja' %}
 {% block content %}
-    <h1>Ressourcenpool Bamberg</h1>
-    <p><strong>Impressum</strong></p>
-    <p>Anbieter:<br />Max Mustermann<br />Musterstraße 1<br />96049 Bamberg</p>
-    <p>Kontakt:<br />Telefon: 0951/12345678<br />Telefax: 0951/1234567<br />E-Mail: mail@mustermann.de<br />Website: www.mustermann.de</p>
-    <p> </p>
-    <p>Bei redaktionellen Inhalten:</p>
-    <p>Verantwortlich nach § 55 Abs.2 RStV<br />Moritz Schreiberling<br />Musterstraße 2<br />96049 Bamberg</p>
+    <div class="row container">
+        <div class="col-2"></div>
+        <div class="col-9">
+            <div class="row">
+                {% for favorite in favorites %}
+                    <div class="well col-3" align="center"><div class="fav">{{favorite.room_number}}</div></div>
+                {% endfor %}
+
+                <div class="well col-3" align="center"><div class="fav">fuck</div></div>
+                <div class="well col-3" align="center"><div class="fav">this</div></div>
+                <div class="well col-3" align="center"><div class="fav">god</div></div>
+                <div class="well col-3" align="center"><div class="fav">damn</div></div>
+                <div class="well col-3" align="center"><div class="fav">shit</div></div>
+
+            </div>
+        </div>
+    </div>
 {% endblock %}
