@@ -2,6 +2,11 @@ from django.shortcuts import render
 from roomservice.models import Room, Booking
 import logging
 import datetime
+from roomservice.models import Room, Favorite
+from django.shortcuts import render, redirect
+import logging
+
+
 logger = logging.getLogger(__name__)
 
 
@@ -62,4 +67,13 @@ def admin(request):
 
 
 def favorites(request):
+    if request.user.is_authenticated:
+        favorites = Favorite.objects.filter(staff__user=request.user)
+        return render(request, 'favorites.jinja',
+                      {"title": "rooF(i)S is love rooF(i)S is live!!", 'favorites': favorites})
+    return render(request, 'favorites.jinja',
+                  {"title": "rooF(i)S is love rooF(i)S is live!!"})
+
+
+def location_based_search(request):
     return render(request, 'favorites.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})
