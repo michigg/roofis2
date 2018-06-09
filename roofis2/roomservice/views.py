@@ -9,6 +9,7 @@ def home(request):
 
 
 def booking(request):
+    belegung = Room.objects.get()
     return render(request, 'booking.jinja', {"title": "rooF(i)S is love rooF(i)S is live!!"})
 
 
