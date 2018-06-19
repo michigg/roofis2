@@ -183,11 +183,11 @@ LOGGING = {
         #     'level': 'INFO',
         # },
 
-        'roomservice': {
+        'roomservice.utils': {
             'handlers': ['console'],
             'level': 'INFO',
         },
-        'roomservice.management.sample_data_creation': {
+        'roomservice.management': {
             'handlers': ['console'],
             'level': 'DEBUG'
         }
