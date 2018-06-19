@@ -63,7 +63,7 @@ class Room(models.Model):
     description = models.CharField(max_length=64, null=True, blank=True)
     equipment = models.ManyToManyField(Equipment)
 
-    orgname = models.ForeignKey(OrgUnit, on_delete=models.PROTECT, related_name='orgname', null=True, blank=True)
+    orgname = models.ForeignKey(OrgUnit, on_delete=models.PROTECT, related_name='room_orgname', null=True, blank=True)
     orgunits = models.ManyToManyField(OrgUnit)
 
     # seating = models.BooleanField()
@@ -89,8 +89,45 @@ class Room(models.Model):
 #     def __str__(self):
 #         return '{} - {} - {}'.format(self.room.room_number, self.equipment.name, self.count)
 #
-class Exclude_Term(models.Model):
-    date = models.DateField()
+# class Exclude_Term(models.Model):
+#     date = models.DateField()
+
+class LectureSpecifiaction(models.Model):
+    univis_id = models.CharField(max_length=8)
+    name = models.CharField(max_length=32)
+
+    def __str__(self):
+        return '{}'.format(self.univis_id)
+
+
+class LectureType(models.Model):
+    name = models.CharField(max_length=32)
+
+    def __str__(self):
+        return '{}'.format(self.name)
+
+
+class Lecture(models.Model):
+    univis_id = models.IntegerField(unique=True)
+    univis_key = models.CharField(unique=True, max_length=64)
+    type = models.ForeignKey(LectureType, on_delete=models.PROTECT, null=True, blank=True)
+    title = models.CharField(max_length=64)
+    short = models.CharField(max_length=16, null=True, blank=True)
+    ects = models.FloatField(null=True, blank=True)
+    sws = models.FloatField(null=True, blank=True)
+    estimated_visitor = models.PositiveIntegerField(null=True, blank=True)
+    specification = models.ManyToManyField(LectureSpecifiaction)
+    orgname = models.ForeignKey(OrgUnit, on_delete=models.PROTECT, related_name='lecture_orgname', null=True,
+                                blank=True)
+    orgunits = models.ManyToManyField(OrgUnit)
+    url_description = models.URLField(null=True, blank=True)
+
+    organizational = models.TextField(max_length=64, null=True, blank=True)
+    time_description = models.TextField(max_length=64, null=True, blank=True)
+    summary = models.TextField(max_length=64, null=True, blank=True)
+
+    def __str__(self):
+        return '{}'.format(self.title)
 
 # class Lecture_Term(models.Model):
 #     room = models.ForeignKey(Room, on_delete=models.CASCADE)

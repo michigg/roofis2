@@ -31,7 +31,7 @@ urlpatterns = [
     path('api/', include('roomservice.api.urls')),
 
     # API Docs
-    # path('api/docs/', include_docs_urls(title='Respool API Docs', public=True,
-    #                                     authentication_classes=[BasicAuthentication, ],
-    #                                     permission_classes=[AllowAny, ])),
+    path('api/docs/', include_docs_urls(title='Respool API Docs', public=True,
+                                        authentication_classes=[BasicAuthentication, ],
+                                        permission_classes=[AllowAny, ])),
 ]

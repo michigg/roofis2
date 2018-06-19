@@ -3,8 +3,8 @@ from . import views
 
 app_name = 'roomservice'
 urlpatterns = [
-    path('', views.favorites, name='home'),
-    path('favorite/', views.add_favorites, name='add-fav'),
+    # path('', views.favorites, name='home'),
+    # path('favorite/', views.add_favorites, name='add-fav'),
 
     path('error/', views.error, name='error'),
     path('success/', views.success, name='success'),

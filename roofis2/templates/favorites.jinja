@@ -13,7 +13,7 @@
             {% if request.user.is_authenticated %}
                 {% for favorite in favorites %}
                     <div class="col-12 col-md-6">
-                        {{ macros.home_item_with_icon(icon='fa-star', icon_size='fa-4x', url_id='', link=favorite.room.id, title=favorite.room.room_number, attr='') }}
+                        {{ macros.home_item_with_icon_2(icon='fa-star', icon_size='fa-4x', url_id='roomservice:booking', payload=favorite.room.id, link=favorite.room.id, title=favorite.room.room_number) }}
                     </div>
                 {% endfor %}
                 <div class="col-12 col-md-6">
