@@ -1,8 +1,10 @@
 from django.contrib import admin
-from .models import Room, Building, RoomType, OrgUnit, Equipment, Staff, Lecture, LectureSpecifiaction, LectureType
+from .models import Room, Building, RoomType, OrgUnit, Equipment, Staff, Lecture, LectureTerm, LectureSpecifiaction, \
+    LectureType
 
 # Register your models here.
 admin.site.register(Lecture)
+admin.site.register(LectureTerm)
 admin.site.register(LectureSpecifiaction)
 admin.site.register(LectureType)
 admin.site.register(Staff)

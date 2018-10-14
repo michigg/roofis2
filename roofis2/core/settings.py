@@ -28,6 +28,8 @@ LOGIN_REDIRECT_URL = 'roomservice:home'
 
 ALLOWED_HOSTS = []
 
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 40000
+
 # Application definition
 
 INSTALLED_APPS = [

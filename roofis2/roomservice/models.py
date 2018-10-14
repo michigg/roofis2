@@ -101,6 +101,7 @@ class LectureSpecifiaction(models.Model):
 
 
 class LectureType(models.Model):
+    #univis_id = models.CharField(max_length=8)
     name = models.CharField(max_length=32)
 
     def __str__(self):
@@ -129,16 +130,20 @@ class Lecture(models.Model):
     def __str__(self):
         return '{}'.format(self.title)
 
-# class Lecture_Term(models.Model):
-#     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-#     start_date = models.DateField()
-#     end_date = models.DateField()
-#     start_time = models.TimeField()
-#     end_time = models.TimeField()
-#     repeat_intervall = models.IntegerField()
-#     excludes = models.ManyToManyField(Exclude_Term)
-#     # TODO: Help please
-#     exclude_vacation = models.BooleanField()
+
+class LectureTerm(models.Model):
+    # room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    room = models.CharField(max_length=64, null=True, blank=True)
+    start_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    start_time = models.TimeField(null=True, blank=True)
+    end_time = models.TimeField(null=True, blank=True)
+    exclude = models.CharField(max_length=128, null=True, blank=True)
+    repeat = models.CharField(max_length=16, null=True, blank=True)
+    lecture = models.ForeignKey(Lecture, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return '{}'.format(self.lecture.title)
 
 # class Booking(models.Model):
 #     DAY = 0

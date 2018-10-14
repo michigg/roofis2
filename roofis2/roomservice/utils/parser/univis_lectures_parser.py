@@ -22,7 +22,9 @@ def getLectures(dict: dict):
 
 def parsePage(url):
     page = loadPage(url)
+    pprint(url)
     dict = xmltodict.parse(page)
+    # pprint(dict['UnivIS']['Lecture'], depth=4)
     lectures = getLectures(dict)
     return lectures
 
