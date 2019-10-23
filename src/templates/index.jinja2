@@ -125,7 +125,13 @@
                             <td>{{ "%s/%02d.%03d"| format(room.building_key,room.floor, room.number) }}</td>
                             <td>{{ room.name }}</td>
                             <td>{{ room.size }}</td>
-                            <td>{{ room.next_allocation }}</td>
+                            <td class="text-center">
+                                {% if room.next_allocation %}
+                                    {{ room.next_allocation }}
+                                {% else %}
+                                    <i class="fas fa-check text-success"></i>
+                                {% endif %}
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
