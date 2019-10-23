@@ -13,29 +13,31 @@ ROOFIS_API = os.environ.get("ROOFIS_API")
 def index():
     locations = requests.get(f'{ROOFIS_API}locations/').json()
     if request.method == 'POST':
-        form = request.form
-        start_date = form.get("start_date", None)
-        start_time = form.get("start_time", None)
-        location = form.get("location", None)
-        min_size = form.get("min_size", None)
+        form, location, min_size, start_date, start_time = get_validated_form_data()
+
         if start_time and start_date:
             url = get_roofis_api_url(location, min_size, start_date, start_time)
-            print(url)
+
             response = requests.get(url)
             if response.status_code == 200:
-                print(response.json())
                 empty_results = True if not response.json() else False
                 return render_template("index.jinja2", free_rooms=response.json(), locations=locations, form=form,
                                        empty_results=empty_results)
-            return render_template("index.jinja2",
-                                   error="Zurzeit ist der RooFiS Endpunkt nicht erreichbar. Versuchen Sie es später nochmal, oder kontaktieren Sie den Administrator. ",
-                                   locations=locations, form=form)
+            else:
+                error_msg = "Zurzeit ist der RooFiS Endpunkt nicht erreichbar. Versuchen Sie es später nochmal, oder kontaktieren Sie den Administrator. "
         else:
-            return render_template("index.jinja2",
-                                   error="Sie müssen mindestens ein Startdatum und eine Startzeit angeben",
-                                   locations=locations, form=form)
-    else:
-        return render_template("index.jinja2", locations=locations, form={})
+            error_msg = "Sie müssen mindestens ein Startdatum und eine Startzeit angeben",
+        return render_template("index.jinja2", error=error_msg, locations=locations, form=form)
+    return render_template("index.jinja2", locations=locations, form={})
+
+
+def get_validated_form_data():
+    form = request.form
+    start_date = form.get("start_date", None)
+    start_time = form.get("start_time", None)
+    location = form.get("location", None)
+    min_size = form.get("min_size", None)
+    return form, location, min_size, start_date, start_time
 
 
 def get_roofis_api_url(location, min_size, start_date, start_time):
@@ -46,8 +48,7 @@ def get_roofis_api_url(location, min_size, start_date, start_time):
         params['location'] = location
     if min_size:
         params['min_size'] = min_size
-    url = f'{ROOFIS_API}?{urlencode(params, quote_via=quote_plus)}'
-    return url
+    return f'{ROOFIS_API}?{urlencode(params, quote_via=quote_plus)}'
 
 
 if __name__ == '__main__':
