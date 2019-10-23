@@ -60,7 +60,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![RooFiS Screen Shot][product-screenshot]](https://github.com/michigg/roofis2/master/img/demo.png)
+[![RooFiS Screen Shot][product-screenshot]](https://raw.githubusercontent.com/michigg/roofis2/master/images/demo.png)
 
 "RooFiS2" or "Room Finder Service2" is a room search for free learning rooms at the Otto-Friedrich University Bamberg. The search is limited by day and time and can be further restricted by location and minimum number of persons.
 
@@ -164,4 +164,4 @@ Project Link: [https://github.com/michigg/roofis2](https://github.com/michigg/ro
  `TODO`
 
 
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/demo.png
