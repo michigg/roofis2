@@ -15,11 +15,14 @@ function initForm() {
     let startDateInput = document.getElementById('startdate');
     let startTimeInput = document.getElementById('starttime');
 
-    if (startDateInput.value == null) {
+    console.log(startDateInput.value);
+    console.log(startTimeInput.value);
+
+    if (!startDateInput.value) {
         startDateInput.value = date;
     }
 
-    if (startTimeInput.value == null) {
+    if (!startTimeInput.value) {
         startTimeInput.value = time;
     }
 
@@ -39,6 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
         paging: false
     });
     $('.dataTables_length').addClass('bs-select');
+    initForm();
 });
 
-initForm();
