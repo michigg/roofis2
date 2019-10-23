@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RooFiS 2</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='libs/bootstrap-4.3.1/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='libs/fontawesome-5.11.2/css/all.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body class="bg-white">
+<nav class="navbar navbar-light bg-secondary">
+    <a class="navbar-brand" href="#">RooFiS - Room Finder Service</a>
+</nav>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xs-11 col-sm-10 col-md-9 col-lg-7 col-xl-5 mt-3 shadow bg-secondary py-3 px-4">
+            <form action="/" method="POST">
+                {% if error %}
+                    <div class="alert alert-warning">{{ error }}</div>
+                {% endif %}
+                <div class="form-row">
+                    <div class="col-12 col-md-8 mb-2">
+                        <label for="startdate">Wann?</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                            <input type="date"
+                                   name="start_date"
+                                   class="form-control"
+                                   id="startdate"
+                                   value="{{ form.start_date|default('') }}"
+                                   placeholder="Datum"
+                                   required
+                            >
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-2">
+                        <label for="starttime">Ab</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="far fa-clock"></i></div>
+                            </div>
+                            <input type="time"
+                                   name="start_time"
+                                   class="form-control"
+                                   id="starttime"
+                                   value="{{ form.start_time|default('') }}"
+                                   placeholder="Uhrzeit"
+                                   required
+                            >
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <label for="building_key">Wo?</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
+                            </div>
+                            <select class="custom-select" name="location" id="locations_select">
+                                <option
+                                        {% if form and not form.location %}selected{% endif %}
+                                        value=""
+                                >Ort auswählen
+                                </option>
+                                {% for location in locations %}
+                                    <option
+                                            value="{{ location }}"
+                                            {% if form and location == form.location %}selected{% endif %}>{{ location }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-2 mt-auto">
+                        <div class="input-group">
+                            {#                        TODO: Implement#}
+                            <button onclick="getPosition" class="btn btn-primary form-control">
+                                <i class="fas fa-search-location"></i> Aktuelle Position
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <label for="min_room_size">Für?</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-greater-than-equal"></i></i></div>
+                            </div>
+                            <input type="number"
+                                   name="min_size"
+                                   step="1"
+                                   class="form-control"
+                                   id="min_room_size"
+                                   value="{{ form.min_size|default('') }}"
+                                   placeholder="Mindestraumgröße">
+                        </div>
+                    </div>
+                    <div class="col-12 text-center mt-2">
+                        <button type="submit" class="btn btn-primary w-75">Raumsuche starten</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if free_rooms %}
+        <div class="row justify-content-center">
+            <div class="col-12 col-xs-11 col-sm-10 col-md-9 col-lg-7 col-xl-5 mt-3 shadow bg-secondary py-3 px-4">
+                <h1 class="text-center">Ergebnisse</h1>
+                <table id="results" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Raum <i class="fas fa-cube"></i></th>
+                        <th>Typ <i class="fas fa-shapes"></i></th>
+                        <th>Plätze <i class="fas fa-chair"></i></th>
+                        <th>Frei <i class="fas fa-stopwatch"></i></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for room in free_rooms %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ "%s/%02d.%03d"| format(room.building_key,room.floor, room.number) }}</td>
+                            <td>{{ room.name }}</td>
+                            <td>{{ room.size }}</td>
+                            <td>{{ room.next_allocation }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+    {% if empty_results %}
+        <div class="row justify-content-center">
+            <div class="col-12 col-xs-11 col-sm-10 col-md-9 col-lg-7 col-xl-5 mt-3 shadow bg-secondary py-3 px-4 text-center">
+                <h1>Ergebnisse</h1>
+                <p>Keine Freien Räume gefunden</p>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='libs/jquery-3.3.1.js') }}"></script>
+<script src="{{ url_for('static', filename='libs/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url_for('static', filename='libs/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ url_for('static', filename='libs/dataTables.responsive.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{#<link rel="stylesheet" href="{{ url_for('static', filename='libs/dataTables.bootstrap.min.css') }}">#}
+{#<link rel="stylesheet" href="{{ url_for('static', filename='libs/dataTables.fontAwesome.css') }}">#}
+
+</body>
+</html>

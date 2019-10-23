@@ -1,8 +1,0 @@
-{% extends 'base.jinja' %}
-{% block content %}
-    <form method="post">
-    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-    {{ form.as_p() }}
-    <button type="submit">Login</button>
-  </form>
-{% endblock %}
