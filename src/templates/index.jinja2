@@ -11,7 +11,7 @@
 <body class="bg-white">
 <nav class="navbar navbar-light bg-secondary">
     <a class="navbar-brand" href="#">RooFiS - Room Finder Service</a>
-    <a  href="https://github.com/michigg/roofis2"><i class="fab fa-github"></i> Github</a>
+    <a href="https://github.com/michigg/roofis2"><i class="fab fa-github"></i> Github</a>
 </nav>
 
 <div class="container-fluid">
@@ -123,7 +123,9 @@
                     {% for room in free_rooms %}
                         <tr>
                             <td>{{ loop.index }}</td>
-                            <td>{{ "%s/%02d.%03d"| format(room.building_key,room.floor, room.number) }}</td>
+                            <td>
+                                <a href="{{ lector_url }}/{{ room.building_key }}/{{ room.floor }}/{{ room.number }}">{{ "%s/%02d.%03d"| format(room.building_key,room.floor, room.number) }}</a>
+                            </td>
                             <td>{{ room.name }}</td>
                             <td>{{ room.size }}</td>
                             <td class="text-center">

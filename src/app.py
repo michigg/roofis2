@@ -7,6 +7,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 ROOFIS_API = os.environ.get("ROOFIS_API")
+LECTOR_WEB = os.environ.get("LECTOR_WEB_URL")
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -22,7 +23,7 @@ def index():
             if response.status_code == 200:
                 empty_results = True if not response.json() else False
                 return render_template("index.jinja2", free_rooms=response.json(), locations=locations, form=form,
-                                       empty_results=empty_results)
+                                       empty_results=empty_results, lector_url=LECTOR_WEB)
             else:
                 error_msg = "Zurzeit ist der RooFiS Endpunkt nicht erreichbar. Versuchen Sie es später nochmal, oder kontaktieren Sie den Administrator. "
         else:
