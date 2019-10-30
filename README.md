@@ -6,10 +6,10 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Build Status](https://img.shields.io/github/contributors/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
-[![Build Status](https://img.shields.io/github/forks/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
-[![Build Status](https://img.shields.io/github/stars/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
-[![Build Status](https://img.shields.io/github/issues/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
+[![Contributors](https://img.shields.io/github/contributors/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
+[![Forks](https://img.shields.io/github/forks/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
+[![Stars](https://img.shields.io/github/stars/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
+[![Issues](https://img.shields.io/github/issues/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
 [![License](https://img.shields.io/github/license/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
 
 
@@ -90,7 +90,7 @@ To get a local copy up and running follow these simple steps.
 To run this project you need to pre install [docker](https://docs.docker.com/v17.09/engine/installation/) with [docker-compose](https://docs.docker.com/compose/install/)
 
 ### Installation
-#### Produktion with Docker
+#### Production with Docker
 1. Clone the repo
 ```sh
 git clone https:://github.com/michigg/roofis2.git
