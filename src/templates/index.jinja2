@@ -121,21 +121,23 @@
                     </thead>
                     <tbody>
                     {% for room in free_rooms %}
-                        <tr>
-                            <td>{{ loop.index }}</td>
-                            <td>
-                                <a href="{{ lector_url }}/{{ room.building_key }}/{{ room.floor }}/{{ room.number }}">{{ "%s/%02d.%03d"| format(room.building_key,room.floor, room.number) }}</a>
-                            </td>
-                            <td>{{ room.name }}</td>
-                            <td>{{ room.size }}</td>
-                            <td class="text-center">
-                                {% if room.next_allocation %}
-                                    {{ room.next_allocation }}
-                                {% else %}
-                                    <i class="fas fa-check text-success"></i>
-                                {% endif %}
-                            </td>
-                        </tr>
+                        {% if room.building_key and room.floor and room.number %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>
+                                    <a href="{{ lector_url }}/{{ room.building_key }}/{{ room.floor }}/{{ room.number }}">{{ "%s/%02d.%03d"| format(room.building_key,room.floor, room.number) }}</a>
+                                </td>
+                                <td>{{ room.name }}</td>
+                                <td>{{ room.size }}</td>
+                                <td class="text-center">
+                                    {% if room.next_allocation %}
+                                        bis {{ room.next_allocation }}
+                                    {% else %}
+                                        <i class="fas fa-check text-success"></i>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
                     </tbody>
                 </table>
