@@ -1,0 +1,115 @@
+kind: pipeline
+type: docker
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: fetch
+  image: alpine/git
+  commands:
+  - git fetch --tags
+ 
+- name: build
+  privileged: true
+  image: docker/compose:1.24.1
+  volumes:
+  - name: docker_sock
+    path: /var/run/docker.sock
+  commands:
+  - docker-compose -f docker-compose.yml build --no-cache
+  depends_on:
+  - fetch
+
+#- name: test
+#  image: docker/compose:1.24.1
+#  privileged: true
+#  volumes:
+#  - name: docker_sock
+#    path: /var/run/docker.sock
+#  commands:
+#  - echo "-------- docker-compose down --------"
+#  - docker-compose -f docker-compose.test.yml down
+#  - echo "-------- docker-compose up -d --------"
+#  - docker-compose -f docker-compose.test.yml up -d
+#  - echo "-------- docker-compose ps --------"
+#  - docker-compose -f docker-compose.test.yml ps
+#  - echo "-------- docker-compose test --------"
+#  - docker-compose -f docker-compose.test.yml run roofis2/entrypoint.sh
+#  - docker-compose -f docker-compose.test.yml down
+#  depends_on:
+#  - fetch
+#  - build
+
+- name: publish_dockerhub
+  image: plugins/docker
+  when:
+    event: tag
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: michigg/roofis2
+    tags:
+      - latest
+      - ${DRONE_TAG}
+  depends_on:
+  - fetch
+  - build
+#  - test
+
+- name: publish_github
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_release_token
+    checksum:
+      - md5
+      - sha1
+      - sha256
+      - sha512
+      - adler32
+      - crc32
+  when:
+    event: tag
+  depends_on:
+  - fetch
+  - build
+#  - test
+    
+- name: send telegram notification
+  image: appleboy/drone-telegram
+  when:
+    status:
+      - success
+      - failure
+  settings:
+    token:
+      from_secret: telegram_token
+    to:
+      from_secret: telegram_chat_id
+  message: >
+   {{#success build.status}}
+     build {{build.number}} succeeded. Good job.
+   {{else}}
+     build {{build.number}} failed. Fix me please.
+   {{/success}}
+  depends_on:
+  - fetch
+  - build
+#  - test
+  - publish_dockerhub
+  - publish_github
+
+trigger:
+  event:
+  - push
+  - tag
+
+volumes:
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock

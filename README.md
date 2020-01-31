@@ -6,6 +6,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+![Drone (self-hosted)](https://img.shields.io/drone/build/michigg/roofis2?server=https%3A%2F%2Fdrone.github.michigg.de&style=for-the-badge)
 [![Contributors](https://img.shields.io/github/contributors/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
 [![Forks](https://img.shields.io/github/forks/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
 [![Stars](https://img.shields.io/github/stars/michigg/roofis2.svg?style=for-the-badge)](https://github.com/michigg/roofis2)
