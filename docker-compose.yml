@@ -6,16 +6,15 @@ services:
     build:
       context: .
       dockerfile: docker/roofis2/Dockerfile
+    volumes:
+      - ./src:/app
     ports:
       - 8080:80
     env_file:
       - docker/roofis2/roofis2.env
 
   univis_api:
-    image: univis_api:0.1.0
-    build:
-      context: .
-      dockerfile: docker/univis_api/Dockerfile
+    image: michigg/univis_api
     ports:
       - 8888:80
     env_file:
@@ -23,10 +22,7 @@ services:
 
 
   roofis_api:
-    image: roofis_api:0.1.0
-    build:
-      context: .
-      dockerfile: docker/roofis_api/Dockerfile
+    image: michigg/roofis2_api
     ports:
       - 8181:80
     env_file:
