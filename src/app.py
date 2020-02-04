@@ -47,6 +47,16 @@ def index():
     return render_template("index.jinja2", form={}, lector_building_api=LECTOR_BUILDING_API)
 
 
+@app.route('/imprint', methods=['GET'])
+def imprint():
+    return render_template("legal/imprint.jinja2")
+
+
+@app.route('/privacy', methods=['GET'])
+def privacy():
+    return render_template("legal/privacy.jinja2")
+
+
 def get_validated_form_data():
     form = request.form
     start_date = form.get("start_date", None)

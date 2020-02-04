@@ -6,6 +6,7 @@ services:
     build: .
     volumes:
       - ./src:/app
+      - ./legal:/app/templates/legal
     ports:
       - 8080:80
     env_file:

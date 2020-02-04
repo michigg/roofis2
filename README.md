@@ -92,26 +92,11 @@ To run this project you need to pre install [docker](https://docs.docker.com/v17
 
 ### Installation
 #### Production with Docker
-1. Clone the repo
-```sh
-git clone https:://github.com/michigg/roofis2.git
-```
-2. Update envs images
-```
-Set the correct api Endpoints
-```
-3. Build images
-```sh
-docker-compose build
-```
-3. Build images
-```sh
-docker-compose up -d
-```
-4. Finished
-```
-Roofis runs per default on `127.0.0.1:8080`
-```
+1. COPY `docker-compose.yml` and `docker/roofis2/roofis2.env`
+2. UPDATE envs: Set the correct api Endpoints
+3. FIRST START: Run `docker-compose up -d`
+4. CHANGE permissions: Execute `docker-compose exec roofis2 sh` and `chown www:www -R /app/templates/legal` (Sorry for that)
+5. RESTART the service `docker-compose down && docker-compose up -d`
 
 #### Develop with Docker
 `# TODO`

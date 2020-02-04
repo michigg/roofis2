@@ -16,6 +16,9 @@ RUN chmod +x /start.sh
 
 WORKDIR app
 COPY src .
+COPY src/templates/legal /tmp/legal
+VOLUME ["/app/templates/legal"]
+
 
 RUN mkdir /run/nginx \
     && touch /run/nginx/nginx.pid \
