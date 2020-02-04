@@ -5,7 +5,16 @@ import requests
 from flask import Flask, render_template, request
 from flask_cors import CORS
 
+from version import VERSION
+
 app = Flask(__name__)
+
+
+@app.context_processor
+def inject_version():
+    return {"version": VERSION}
+
+
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 ROOFIS_API = os.environ.get("ROOFIS_API")

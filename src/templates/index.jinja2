@@ -12,7 +12,6 @@
 <body class="bg-white">
 <nav class="navbar navbar-light bg-secondary">
     <a class="navbar-brand" href="#">RooFiS - Room Finder Service</a>
-    <a href="https://github.com/michigg/roofis2"><i class="fab fa-github"></i> Github</a>
 </nav>
 
 <div class="container-fluid">
@@ -144,6 +143,14 @@
             </div>
         </div>
     {% endif %}
+    <footer class="text-center fixed-bottom bg-secondary">
+        <p class="mb-0 mt-1">© Copyright 2020, Michael Götz
+            (<a href="#">Impressum</a>,
+            <a href="#">Datenschutz</a>)</p>
+        <p class="mb-0"><a href="https://github.com/michigg/roofis2/issues" target="_blank">
+            <i class="fab fa-github"></i> Problem melden</a><span
+                class="ml-2">Version: {{ version }}</span></p>
+    </footer>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
