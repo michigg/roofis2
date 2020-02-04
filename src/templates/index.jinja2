@@ -61,25 +61,16 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                             </div>
-                            <select class="custom-select" name="location" id="locations_select">
-                                <option
-                                        {% if form and not form.location %}selected{% endif %}
-                                        value=""
-                                >Ort auswählen
-                                </option>
-                                {% for location in locations %}
-                                    <option
-                                            value="{{ location }}"
-                                            {% if form and location == form.location %}selected{% endif %}>{{ location }}
-                                    </option>
-                                {% endfor %}
+                            <select id="location-select" class="custom-select" name="location" id="locations_select">
                             </select>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 mb-2 mt-auto">
                         <div class="input-group">
                             {#                        TODO: Implement#}
-                            <button onclick="getPosition" class="btn btn-primary form-control" disabled>
+                            <button type="button" onclick="loadPositionRankedBuildings()" id="position-btn"
+                                    class="btn btn-primary form-control"
+                                    data-lector-building-api="{{ lector_building_api }}">
                                 <i class="fas fa-search-location"></i> Aktuelle Position
                             </button>
                         </div>
@@ -88,7 +79,7 @@
                         <label for="min_room_size">Für?</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="fas fa-greater-than-equal"></i></i></div>
+                                <div class="input-group-text"><i class="fas fa-greater-than-equal"></i></div>
                             </div>
                             <input type="number"
                                    name="min_size"
