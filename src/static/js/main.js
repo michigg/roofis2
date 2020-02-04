@@ -79,7 +79,7 @@ function loadPositionRankedBuildings() {
     if ("geolocation" in navigator) {
         /* geolocation funktioniert */
         navigator.geolocation.getCurrentPosition(function (position) {
-            let positionFilteredUrl = url + "building/?coord=" + position.coords.latitude + "," + position.coords.longitude;
+            let positionFilteredUrl = url + "building/?coord=" + position.coords.longitude + "," + position.coords.latitude;
             fetch(positionFilteredUrl)
                 .then((resp) => resp.json())
                 .then(data => {
