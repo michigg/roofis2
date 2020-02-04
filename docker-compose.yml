@@ -11,23 +11,28 @@ services:
     env_file:
       - docker/roofis2/roofis2.env
 
-#  univis_api:
-#    image: michigg/univis_api
-#    ports:
-#      - 8888:80
-#    env_file:
-#      - docker/univis_api/univis_api.env
-#
-#  roofis_api:
-#    image: michigg/roofis2_api
-#    ports:
-#      - 8181:80
-#    env_file:
-#      - docker/roofis_api/roofis_api.env
-#
-#  redis:
-#    image: redis:5.0.6-alpine3.10
-#    command: --appendonly yes
-#    volumes:
-#      - ./data/redis:/data
+  univis_api:
+    image: michigg/univis_api
+    ports:
+      - 8888:80
+    env_file:
+      - docker/univis_api/univis_api.env
+
+  roofis_api:
+    image: michigg/roofis2_api
+    ports:
+      - 8181:80
+    env_file:
+      - docker/roofis_api/roofis_api.env
+
+  lector_building_api:
+    image: michigg/lector_building_api
+    ports:
+      - 9999:80
+
+  redis:
+    image: redis:5.0.6-alpine3.10
+    command: --appendonly yes
+    volumes:
+      - ./data/redis:/data
 
