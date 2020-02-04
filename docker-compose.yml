@@ -2,7 +2,7 @@ version: '3'
 
 services:
   roofis2:
-    image: roofis2:0.1.0
+    image: roofis2:1.0.0
     build: .
     volumes:
       - ./src:/app
