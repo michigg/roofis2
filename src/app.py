@@ -52,7 +52,7 @@ def get_roofis_api_url(location, min_size, start_date, start_time):
     params['start_date'] = start_date
     params['start_time'] = start_time
     if location:
-        params['location'] = location
+        params['building_key'] = location
     if min_size:
         params['min_size'] = min_size
     return f'{ROOFIS_API}?{urlencode(params, quote_via=quote_plus)}'
