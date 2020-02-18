@@ -13,7 +13,7 @@
                                    name="start_date"
                                    class="form-control"
                                    id="startdate"
-                                   :value="form.start_date"
+                                   :value="startDate"
                                    placeholder="Datum"
                                    required
                             >
@@ -29,25 +29,30 @@
                                    name="start_time"
                                    class="form-control"
                                    id="starttime"
-                                   :value="form.start_time"
+                                   :value="startTime"
                                    placeholder="Uhrzeit"
                                    required
                             >
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-8">
-                        <label for="building_key">Wo?</label>
+                        <label for="location-select">Wo?</label>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
                             </div>
                             <select id="location-select" class="custom-select" name="location">
+                                <option v-for="buildingKey in buildingKeys" :key="buildingKey" value="">---- Standort
+                                    auswählen -----
+                                </option>
+                                <option v-for="buildingKey in buildingKeys" :key="buildingKey" value="buildingKey">
+                                    {{buildingKey}}
+                                </option>
                             </select>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 mb-2 mt-auto">
                         <div class="input-group">
-                            {# TODO: Implement#}
                             <button type="button" onclick="loadPositionRankedBuildings()" id="position-btn"
                                     class="btn btn-primary form-control"
                                     :data-lector-building-api="lector_building_api">
@@ -81,7 +86,19 @@
 
 <script>
     export default {
-        name: "ParameterSelection"
+        name: "ParameterSelection",
+        data: function () {
+            return {
+                startDate: "2019-02-13",
+                startTime: "14:00",
+                buildingKey: ["WE5", "F21"],
+                form: {
+                    min_size: ""
+
+                }
+
+            }
+        },
     }
 </script>
 
