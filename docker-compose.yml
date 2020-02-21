@@ -5,8 +5,7 @@ services:
     image: roofis2:1.0.0
     build: .
     volumes:
-      - ./src:/app
-      - ./legal:/app/templates/legal
+      - ./roofis2/public/config/config.json:/usr/share/nginx/html/config/config.json
     ports:
       - 8080:80
     env_file:

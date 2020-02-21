@@ -1,0 +1,21 @@
+{
+  "roofisForm": {
+    "dateLabel": "Date?",
+    "timeLabel": "Time?",
+    "locationLabel": "Location?",
+    "defaultLocationOption": "Select location",
+    "locationAutoPosition": "Current Position",
+    "sizeLabel": "Size?",
+    "executeSearch": "Start Search"
+  },
+  "results": {
+    "results": "Results",
+    "noFreePlaces": "No free rooms found.",
+    "room": "Room",
+    "size": "Size",
+    "type": "Type",
+    "free": "Free?",
+    "freeUntil": "until",
+    "notAvailable": "N.A."
+  }
+}

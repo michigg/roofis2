@@ -1,0 +1,21 @@
+{
+  "roofisForm": {
+    "dateLabel": "Wann?",
+    "timeLabel": "Ab?",
+    "locationLabel": "Wo?",
+    "defaultLocationOption": "Standort auswählen",
+    "locationAutoPosition": "Aktuelle Position",
+    "sizeLabel": "Größe?",
+    "executeSearch": "Raumsuche starten"
+  },
+  "results": {
+    "results": "Ergebnisse",
+    "noFreePlaces": "Es wurden keine freien Räume gefunden.",
+    "room": "Raum",
+    "size": "Plätze",
+    "type": "Typ",
+    "free": "Frei?",
+    "freeUntil": "bis",
+    "notAvailable": "N.A."
+  }
+}
