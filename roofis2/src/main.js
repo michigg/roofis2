@@ -58,7 +58,7 @@ getRuntimeConfig().then(function (json) {
     Vue.mixin({
         data() {
             return {
-                VERSION: "1.2.3",
+                VERSION: "1.1.1",
                 ROOFIS_API: json.ROOFIS_API,
                 LECTOR_BUILDING_API: json.LECTOR_BUILDING_API,
                 IMPRINT_DATA: json.IMPRINT_DATA,
