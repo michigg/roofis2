@@ -2,11 +2,10 @@ version: '3'
 
 services:
   roofis2:
-    image: roofis2:0.1.0
+    image: roofis2:1.0.0
     build: .
     volumes:
-      - ./src:/app
-      - ./legal:/app/templates/legal
+      - ./roofis2/public/config/config.json:/usr/share/nginx/html/config/config.json
     ports:
       - 8080:80
     env_file:
