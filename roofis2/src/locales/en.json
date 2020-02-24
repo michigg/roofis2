@@ -17,5 +17,16 @@
     "free": "Free?",
     "freeUntil": "until",
     "notAvailable": "N.A."
+  },
+  "infoBox": {
+    "headline": "Opening Hours",
+    "contentInformation": "This data is collected directly over the {link} and could therefore be incorrect.",
+    "contentInformationLinkText": "university website",
+    "showOpeningsBtnLabel": "Show opening hours",
+    "hideOpeningsBtnLabel": "Hide opening hours",
+    "tableHeadingLocation": "Location",
+    "tableHeadingWeekdays": "Weekdays",
+    "tableHeadingTimes": "Opening Hours",
+    "loadingError": "The opening hours could not be loaded"
   }
 }

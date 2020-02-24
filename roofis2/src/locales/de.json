@@ -1,4 +1,5 @@
 {
+  "loading": "Lade ...",
   "roofisForm": {
     "dateLabel": "Wann?",
     "timeLabel": "Ab?",
@@ -17,5 +18,16 @@
     "free": "Frei?",
     "freeUntil": "bis",
     "notAvailable": "N.A."
+  },
+  "infoBox": {
+    "headline": "Öffnungszeiten",
+    "contentInformation": "Diese Daten werden direkt von der {link} gelesen und können daher fehlerhaft sein.",
+    "contentInformationLinkText": "Webseite",
+    "showOpeningsBtnLabel": "Öffnungszeiten anzeigen",
+    "hideOpeningsBtnLabel": "Öffnungszeiten ausblenden",
+    "tableHeadingLocation": "Ort",
+    "tableHeadingWeekdays": "Wochentage",
+    "tableHeadingTimes": "Zeiten",
+    "loadingError": "Es konnten keine Öffnungszeiten geladen werden"
   }
 }
