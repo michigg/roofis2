@@ -47,7 +47,8 @@
                     <b-input-group size="md">
                         <b-input-group-prepend is-text>
                             <b-iconstack font-scale="1.5">
-                                <b-icon stacked icon="box-arrow-up-right" scale="0.6" shift-v="0.5" shift-h="0.5"></b-icon>
+                                <b-icon stacked icon="box-arrow-up-right" scale="0.6" shift-v="0.5"
+                                        shift-h="0.5"></b-icon>
                                 <b-icon stacked icon="square"></b-icon>
                             </b-iconstack>
                         </b-input-group-prepend>
@@ -163,10 +164,19 @@
                 if (this.min_size) {
                     params = params.concat("&min_size=").concat(this.min_size)
                 }
+                this.$emit('roomsLoaded', {"loading": true, "error": false, "rooms": []});
                 this.axios
                     .get(url.concat(params))
                     .then((response) => {
-                        this.$emit('roomsLoaded', response.data)
+                        this.$emit('roomsLoaded', {"loading": false, "error": false, "rooms": response.data});
+                    })
+                    .catch((error) => {
+                        // handle error
+                        console.log(error);
+                        this.$emit('roomsLoaded', {"loading": false, "error": true, "rooms": []});
+                    })
+                    .then(() => {
+                        // always executed
                     });
             },
             addSelectDefaultOption: function () {
@@ -180,10 +190,12 @@
     .form-buttom {
         height: calc(2.25rem + 2px);
     }
+
     .row.display-flex {
         display: flex;
         flex-wrap: wrap;
     }
+
     .row.display-flex > [class*='col-'] {
         display: flex;
         flex-direction: column;

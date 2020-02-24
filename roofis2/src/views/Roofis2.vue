@@ -15,7 +15,10 @@
         </b-row>
         <b-row class="justify-content-center">
             <b-col cols="12" md="12" lg="9" xl="7">
-                <results :rooms.sync="this.rooms"></results>
+                <results :rooms.sync="this.rooms"
+                         :rooms-error.sync="this.roomsLoadingError"
+                         :rooms-loading.sync="this.roomsLoadingState">
+                </results>
             </b-col>
         </b-row>
     </div>
@@ -32,13 +35,19 @@
         data() {
             return {
                 rooms: null,
+                roomsLoadingError: false,
+                roomsLoadingState: false
             }
         },
         methods: {
-            onRoomsLoaded: function (freeRooms) {
-                this.rooms = freeRooms;
-                this.$emit('update:rooms', freeRooms)
-            }
+            onRoomsLoaded: function (data) {
+                this.rooms = data.rooms;
+                this.roomsLoadingError = data.error;
+                this.roomsLoadingState = data.loading;
+                this.$emit('update:rooms', this.rooms);
+                this.$emit('update:rooms', this.roomsLoadingError);
+                this.$emit('update:rooms', this.roomsLoadingError);
+            },
         },
     }
 </script>

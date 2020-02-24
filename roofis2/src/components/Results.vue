@@ -1,7 +1,7 @@
 <template>
-    <div v-if="rooms && rooms.length > 0" class="row justify-content-center mb-5">
+    <div v-if="rooms && rooms.length > 0 && !roomsLoading" class="row justify-content-center mb-5">
         <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
-            <h1 class="text-center">{{$t('results.results')}}</h1>
+            <h2 class="text-center">{{$t('results.headline')}}</h2>
             <b-table
                     stacked="sm"
                     small
@@ -52,20 +52,36 @@
             </b-table>
         </b-col>
     </div>
-    <div v-else-if="rooms && rooms.length == 0" class="row justify-content-center">
-        <b-col cols="12" xs="11" sm="10" md="9" lg="7" xl="5" class="mt-3 shadow bg-secondary py-3 px-4 text-center">
-            <h1>{{$t('results.results')}}</h1>
-            <p>{{$t('results.noFreePlaces')}}</p>
+    <b-row v-else-if="rooms && rooms.length === 0 && !roomsLoading && !roomsError" class="justify-content-center">
+        <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
+            <h1>{{$t('results.headline')}}</h1>
+            <b-alert variant="warning" show>
+                {{$t('results.noFreePlaces')}}
+            </b-alert>
         </b-col>
-    </div>
-    <div v-else>
-    </div>
+    </b-row>
+    <b-row v-else-if="rooms && rooms.length === 0 && roomsLoading" class="justify-content-center">
+        <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
+            <h2>{{$t('results.headline')}}</h2>
+            <p>{{$t('loading')}}</p>
+            <b-spinner variant="primary" type="grow" label="Spinning"
+                       style="width: 4rem; height: 4rem;"></b-spinner>
+        </b-col>
+    </b-row>
+    <b-row v-else-if="rooms && rooms.length === 0 && roomsError" class="justify-content-center">
+        <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
+            <h2>{{$t('results.headline')}}</h2>
+            <b-alert variant="danger" show>
+                {{$t('results.loadingError')}}
+            </b-alert>
+        </b-col>
+    </b-row>
 </template>
 
 <script>
     export default {
         name: "Results",
-        props: ["rooms"],
+        props: ["rooms", "roomsLoading", "roomsError"],
         data() {
             return {
                 fields: [{key: 'short', sortable: true},
