@@ -2,6 +2,7 @@
     <div v-if="rooms && rooms.length > 0 && !roomsLoading" class="row justify-content-center mb-5">
         <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
             <h2 class="text-center">{{$t('results.headline')}}</h2>
+            <result-info></result-info>
             <b-table
                     stacked="sm"
                     small
@@ -79,8 +80,11 @@
 </template>
 
 <script>
+    import ResultInfo from "./ResultInfo";
+
     export default {
         name: "Results",
+        components: {ResultInfo},
         props: ["rooms", "roomsLoading", "roomsError"],
         data() {
             return {

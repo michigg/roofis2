@@ -69,7 +69,7 @@
             this.axios
                 .get(url)
                 .then((response) => {
-                    this.openings = response.data.openings;
+                    this.openings = response.data.opening_hours;
                     this.source = response.data.source;
                     this.error = false;
                 })

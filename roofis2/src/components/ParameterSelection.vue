@@ -1,7 +1,7 @@
 <template>
     <b-row class="h-100">
         <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
-            <h1>Raumauswahl</h1>
+            <h1>{{$t('roofisForm.headline')}}</h1>
             <b-form-row>
                 <b-col cols="12" md="8" class="mb-2">
                     <label for="startdate">{{$t('roofisForm.dateLabel')}}</label>

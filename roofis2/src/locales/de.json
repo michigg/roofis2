@@ -31,5 +31,12 @@
     "tableHeadingWeekdays": "Wochentage",
     "tableHeadingTimes": "Zeiten",
     "loadingError": "Es konnten keine Öffnungszeiten geladen werden"
+  },
+  "resultInfo": {
+    "contentInformation": "Die angegebenen Räume können aufgrund von Klausuren oder nicht Öffnung gesperrt sein. Weitere Informationen finden sich unter dieser {link}",
+    "contentInformationLinkText": "Webseite",
+    "freeDayInformation": "Laut der {link} ist heute ein freier Tag. Dies kann bedeuten, dass die angegeben Räume nicht geöffnet sind.",
+    "freeDayInformationLinkText": "Informationswebseite",
+    "loadingError": "Es konnten keine Informationen zur Semesterzeit abgerufen werden"
   }
 }

@@ -1,5 +1,7 @@
 {
+  "loading": "Loading ...",
   "roofisForm": {
+    "headline": "Room selection",
     "dateLabel": "Date?",
     "timeLabel": "Time?",
     "locationLabel": "Location?",
@@ -9,14 +11,15 @@
     "executeSearch": "Start Search"
   },
   "results": {
-    "results": "Results",
+    "headline": "Results",
     "noFreePlaces": "No free rooms found.",
     "room": "Room",
     "size": "Size",
     "type": "Type",
     "free": "Free?",
     "freeUntil": "until",
-    "notAvailable": "N.A."
+    "notAvailable": "N.A.",
+    "loadingError": "No rooms could be loaded"
   },
   "infoBox": {
     "headline": "Opening Hours",
@@ -28,5 +31,12 @@
     "tableHeadingWeekdays": "Weekdays",
     "tableHeadingTimes": "Opening Hours",
     "loadingError": "The opening hours could not be loaded"
+  },
+  "resultInfo": {
+    "contentInformation": "The specified rooms may be closed due to examinations or non-opening. Further information can be found on this {link}",
+    "contentInformationLinkText": "website",
+    "freeDayInformation": "According to the {link} today is a day off. This may mean that the specified rooms are not open.",
+    "freeDayInformationLinkText": "information website",
+    "loadingError": "No information about the semester time could be retrieved"
   }
 }
