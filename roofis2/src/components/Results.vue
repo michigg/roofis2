@@ -1,6 +1,6 @@
 <template>
     <div v-if="rooms && rooms.length > 0" class="row justify-content-center mb-5">
-        <b-col cols="12" xs="11" sm="10" md="9" lg="7" xl="5" class="mt-3 shadow bg-secondary py-3 px-4">
+        <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
             <h1 class="text-center">{{$t('results.results')}}</h1>
             <b-table
                     stacked="sm"

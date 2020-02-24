@@ -1,6 +1,7 @@
 <template>
-    <b-row class="justify-content-center">
-        <b-col cols="12" xs="11" sm="10" md="9" lg="7" xl="6" class="mt-3 shadow bg-secondary py-3 px-4">
+    <b-row class="h-100">
+        <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
+            <h1>Raumauswahl</h1>
             <b-form-row>
                 <b-col cols="12" md="8" class="mb-2">
                     <label for="startdate">{{$t('roofisForm.dateLabel')}}</label>
@@ -178,6 +179,14 @@
 <style scoped>
     .form-buttom {
         height: calc(2.25rem + 2px);
+    }
+    .row.display-flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .row.display-flex > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
     }
 
 </style>
