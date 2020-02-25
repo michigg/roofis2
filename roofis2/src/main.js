@@ -69,6 +69,8 @@ getRuntimeConfig().then(function (json) {
     });
 
     Vue.prototype.$locales = getLocaleIDs();
+
+    axios.defaults.headers = {'Access-Control-Allow-Origin': '*'};
     Vue.use(VueAxios, axios);
     Vue.use(BootstrapVue);
     Vue.use(IconsPlugin);
