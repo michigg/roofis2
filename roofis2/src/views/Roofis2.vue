@@ -13,7 +13,7 @@
                 <parameter-selection @roomsLoaded="onRoomsLoaded"></parameter-selection>
             </b-col>
         </b-row>
-        <b-row class="justify-content-center">
+        <b-row class="justify-content-center mb-5">
             <b-col cols="12" md="12" lg="9" xl="7">
                 <results :rooms.sync="this.rooms"
                          :rooms-error.sync="this.roomsLoadingError"
