@@ -61,6 +61,7 @@ getRuntimeConfig().then(function (json) {
                 VERSION: "1.2.0",
                 ROOFIS_API: json.ROOFIS_API,
                 LECTOR_BUILDING_API: json.LECTOR_BUILDING_API,
+                LECTOR_WEB_URL: json.LECTOR_WEB_URL,
                 UNI_INFO_API: json.UNI_INFO_API,
                 IMPRINT_DATA: json.IMPRINT_DATA,
                 PRIVACY_DATA: json.PRIVACY_DATA,

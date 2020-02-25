@@ -41,7 +41,7 @@
                     <span v-else>{{data.value}}</span>
                 </template>
                 <template v-slot:cell(short)="data">
-                    <div class="text-left">{{data.value}}</div>
+                    <div class="text-left"><a :href="getRoofisLink(data.value)" target="_blank">{{data.value}}</a></div>
                 </template>
                 <template v-slot:cell(name)="data">
                     <div class="text-left">{{data.value}}</div>
@@ -94,6 +94,28 @@
                     {key: 'next_allocation', sortable: true}],
                 sortBy: 'short',
                 sortDesc: false,
+                shortMap: {},
+            }
+        },
+        watch: {
+            rooms: function (newVal) { // watch it
+                this.shortMap = this.resultlistToDict(newVal)
+            }
+        },
+        methods: {
+            getRoofisLink: function (roomShort) {
+                if (this.shortMap) {
+                    let room = this.shortMap[roomShort];
+                    return this.$data.LECTOR_WEB_URL + room.building_key + "/" + room.floor + "/" + room.number
+                } else {
+                    return "#"
+                }
+            },
+            resultlistToDict: function (list) {
+                return list.reduce(function (map, obj) {
+                    map[obj.short] = obj;
+                    return map;
+                }, {});
             }
         }
     }
