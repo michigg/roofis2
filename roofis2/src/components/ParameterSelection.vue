@@ -120,7 +120,7 @@
                 this.startTime = ("0" + hours).slice(-2) + ":" + ("0" + minutes).slice(-2);
             },
             geo_success(position) {
-                let positionFilteredUrl = this.$data.LECTOR_BUILDING_API + "/?coord=" + position.coords.longitude + "," + position.coords.latitude;
+                let positionFilteredUrl = this.$data.LECTOR_BUILDING_API + "?coord=" + position.coords.longitude + "," + position.coords.latitude;
                 this.axios
                     .get(positionFilteredUrl)
                     .then((response) => {
