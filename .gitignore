@@ -1,3 +1,7 @@
+# Cypres E2E
+test/e2e/screenshots
+test/e2e/videos
+
 data/
 legal/
 
