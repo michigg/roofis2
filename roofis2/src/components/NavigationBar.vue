@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-light bg-secondary">
+    <nav class="navbar navbar-light bg-secondary" data-cy="navbar">
         <a class="navbar-brand" href="/">RooFiS - Room Finder Service</a>
         <b-navbar-nav class="ml-auto">
             <b-nav-form>

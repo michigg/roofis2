@@ -1,5 +1,5 @@
 <template>
-    <b-row class="h-100">
+    <b-row class="h-100" data-cy="room-selection">
         <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
             <h1>{{$t('roofisForm.headline')}}</h1>
             <b-form-row>
