@@ -1,5 +1,5 @@
 <template>
-    <b-row v-if="this.openings" class="justify-content-center h-100">
+    <b-row v-if="this.openings" class="justify-content-center h-100" data-cy="building-infos">
         <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
             <h2>{{$t('infoBox.headline')}}</h2>
             <b-alert variant="warning" show>
@@ -35,7 +35,7 @@
             </b-collapse>
         </b-col>
     </b-row>
-    <b-row v-else-if="!this.openings && this.$data.UNI_INFO_API" class="justify-content-center h-100">
+    <b-row v-else-if="!this.openings && this.$data.UNI_INFO_API" class="justify-content-center h-100" data-cy="building-infos">
         <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
             <h2>{{$t('infoBox.headline')}}</h2>
             <div v-if="!error">

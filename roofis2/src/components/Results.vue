@@ -1,5 +1,5 @@
 <template>
-    <div v-if="rooms && rooms.length > 0 && !roomsLoading" class="row justify-content-center mb-5">
+    <div v-if="rooms && rooms.length > 0 && !roomsLoading" class="row justify-content-center mb-5" data-cy="data-cy=room-result">
         <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
             <h2 class="text-center">{{$t('results.headline')}}</h2>
             <result-info></result-info>
@@ -53,7 +53,7 @@
             </b-table>
         </b-col>
     </div>
-    <b-row v-else-if="rooms && rooms.length === 0 && !roomsLoading && !roomsError" class="justify-content-center">
+    <b-row v-else-if="rooms && rooms.length === 0 && !roomsLoading && !roomsError" class="justify-content-center" data-cy="data-cy=room-result">
         <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
             <h1>{{$t('results.headline')}}</h1>
             <b-alert variant="warning" show>
@@ -61,7 +61,7 @@
             </b-alert>
         </b-col>
     </b-row>
-    <b-row v-else-if="rooms && rooms.length === 0 && roomsLoading" class="justify-content-center">
+    <b-row v-else-if="rooms && rooms.length === 0 && roomsLoading" class="justify-content-center" data-cy="data-cy=room-result">
         <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
             <h2>{{$t('results.headline')}}</h2>
             <p>{{$t('loading')}}</p>
@@ -69,7 +69,7 @@
                        style="width: 4rem; height: 4rem;"></b-spinner>
         </b-col>
     </b-row>
-    <b-row v-else-if="rooms && rooms.length === 0 && roomsError" class="justify-content-center">
+    <b-row v-else-if="rooms && rooms.length === 0 && roomsError" class="justify-content-center" data-cy="data-cy=room-result">
         <b-col cols="12" class="mt-3 shadow bg-secondary py-3 px-4">
             <h2>{{$t('results.headline')}}</h2>
             <b-alert variant="danger" show>

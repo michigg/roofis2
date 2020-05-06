@@ -12,10 +12,9 @@ describe('Home', () => {
         // CSS selectors used for styling from those used
         // exclusively for testing our application.
         // See: https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements
-        cy.get('[data-cy=headline]').should('be.visible');
+        cy.get('[data-cy=navbar]').should('be.visible');
         cy.get('[data-cy=room-selection]').should('be.visible');
-        cy.get('[data-cy=room-result]').should('be.visible');
-        cy.get('[data-cy=room-info]').should('be.visible');
-        cy.get('Raumauswahl').contains('Home');
+        // TODO: implement
+        // cy.get('[data-cy=building-infos"]').should('be.visible');
     });
 });
