@@ -11,7 +11,7 @@ steps:
   image: alpine/git
   commands:
   - git fetch --tags
- 
+
 - name: build
   privileged: true
   image: docker/compose:1.24.1
@@ -43,6 +43,38 @@ steps:
 #  - fetch
 #  - build
 
+#- name: e2e_test
+#  image: docker/compose:1.24.1
+#  privileged: true
+#  volumes:
+#  - name: docker_sock
+#    path: /var/run/docker.sock
+#  commands:
+#  - echo "-------- Build Service --------"
+#  - docker-compose -f ocker-compose.test.yml build
+#  - echo "-------- Start required services --------"
+#  - docker-compose -f docker-compose.test.yml up -d
+#  - echo "-------- Status Services --------"
+#  - docker-compose -f docker-compose.test.yml ps
+#  - echo "-------- Run e2e tests --------"
+#  - docker-compose -f docker-compose.test.yml exec roofis2 /bin/sh
+#  - echo "-------- Clear services --------"
+#  - docker-compose -f docker-compose.test.yml down
+#  depends_on:
+#  - fetch
+#  - build
+
+- name: code-analysis
+  image: aosapps/drone-sonar-plugin
+  settings:
+    sonar_host:
+      from_secret: sonar_host
+    sonar_token:
+      from_secret: sonar_token
+    depends_on:
+    - fetch
+    - build
+
 - name: publish_dockerhub
   image: plugins/docker
   when:
@@ -57,9 +89,7 @@ steps:
       - latest
       - ${DRONE_TAG}
   depends_on:
-  - fetch
   - build
-#  - test
 
 - name: publish_github
   image: plugins/github-release
@@ -79,7 +109,7 @@ steps:
   - fetch
   - build
 #  - test
-    
+
 - name: send telegram notification
   image: appleboy/drone-telegram
   when:
