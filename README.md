@@ -77,6 +77,7 @@ The project was realized with the following modules:
 * [UnivIS](https://http://univis.uni-bamberg.de/)
 * [univis_api](https://github.com/michigg/univis_api)
 * [roofis_api](https://github.com/michigg/roofis2_api)
+* [lector_building_api](https://github.com/michigg/lector_building_api)
 
 
 <!-- GETTING STARTED -->
