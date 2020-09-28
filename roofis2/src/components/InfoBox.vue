@@ -20,9 +20,9 @@
           <caption>{{ $t('infoBox.tableCaption') }}</caption>
           <thead>
           <tr>
-            <th>{{ $t('infoBox.tableHeadingLocation') }}</th>
-            <th>{{ $t('infoBox.tableHeadingWeekdays') }}</th>
-            <th>{{ $t('infoBox.tableHeadingTimes') }}</th>
+            <th scope="col">{{ $t('infoBox.tableHeadingLocation') }}</th>
+            <th scope="col">{{ $t('infoBox.tableHeadingWeekdays') }}</th>
+            <th scope="col">{{ $t('infoBox.tableHeadingTimes') }}</th>
           </tr>
           </thead>
           <tr v-for="opening in openings" :key="opening.location">
