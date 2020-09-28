@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
 import Multiselect from 'vue-multiselect'
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import VueI18n from 'vue-i18n'
@@ -72,7 +71,6 @@ getRuntimeConfig().then(function (json) {
     Vue.prototype.$locales = getLocaleIDs();
 
     axios.defaults.headers = {'Access-Control-Allow-Origin': '*'};
-    Vue.use(VueAxios, axios);
     Vue.use(BootstrapVue);
     Vue.use(IconsPlugin);
     Vue.component('multiselect', Multiselect);
