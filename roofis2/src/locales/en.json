@@ -30,6 +30,7 @@
     "tableHeadingLocation": "Location",
     "tableHeadingWeekdays": "Weekdays",
     "tableHeadingTimes": "Opening Hours",
+    "tableCaption": "University Buildings Opening Hours",
     "loadingError": "The opening hours could not be loaded"
   },
   "resultInfo": {

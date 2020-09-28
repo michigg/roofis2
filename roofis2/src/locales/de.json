@@ -30,6 +30,7 @@
     "tableHeadingLocation": "Ort",
     "tableHeadingWeekdays": "Wochentage",
     "tableHeadingTimes": "Zeiten",
+    "tableCaption": "Öffnungszeiten der universitären Gebäude",
     "loadingError": "Es konnten keine Öffnungszeiten geladen werden"
   },
   "resultInfo": {
